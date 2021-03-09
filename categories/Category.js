@@ -12,7 +12,7 @@ const Category = connection.define('categories', {
     }
 });
 
-Category.sync({ force: true }); //=> comentada para não rodar novamente (descomentar se for criar a tabela de novo)
+// Category.sync({ force: true }); //=> comentada para não rodar novamente (descomentar se for criar a tabela de novo)
 
 module.exports = Category;
 

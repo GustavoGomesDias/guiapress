@@ -16,11 +16,10 @@ const Article = connection.define('articles', {
         allowNull: false
     }
 });
-
 Category.hasMany(Article);
 Article.belongsTo(Category);
 
-Article.sync({ force: true }); //=> comentada para não rodar novamente (descomentar se for criar a tabela de novo)
+// Article.sync({ force: true }); //=> comentada para não rodar novamente (descomentar se for criar a tabela de novo)
 
 
 module.exports = Article;
