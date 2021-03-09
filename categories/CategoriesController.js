@@ -73,6 +73,20 @@ router.get("/admin/categories/edit/:id", (req, res) => {
     });
 });
 
+router.post("/categories/update", (req, res) => {
+    const id = req.body.id;
+    const title = req.body.title;
+
+    Category.update({title: title, slug: slugiFy(title)}, {
+        where: {
+            id: id
+        }
+    }).then(() => {
+        res.redirect("/admin/categories");
+    });
+
+});
+
 module.exports = router;
 
 // lembrando que não precisa da pasta view por conta do express já ir até ela procurar as views.
