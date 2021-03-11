@@ -11,7 +11,7 @@
             <form  method="POST" action="/categories/save">
                 <input class="form-control" type="text" name="title" placeholder="Defina o título do artigo">
                 <br>
-                <textarea cols="30" rows="8" class="form-control" placeholder="Escreva o artigo aqui" name="body"></textarea>
+                <textarea cols="30" rows="10" class="form-control" placeholder="Escreva o artigo aqui" name="body" id="article"></textarea>
                 <br>
                 <button class="btn btn-success">Cadastrar</button>
             </form>
@@ -20,3 +20,18 @@
 </div>
 
 <%- include('../../partials/footer.ejs') %>
+
+<!-- TinyMCE é o editor de texto bonitão -->
+<script src="/tinymce/tinymce.min.js"></script>
+
+<script>
+    // Voltar na aula 90 para entender os plugins
+    tinymce.init({
+        language: 'pt_BR',
+        selector: '#article',
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste  emoticons'
+        ]
+    });
+
+</script>
