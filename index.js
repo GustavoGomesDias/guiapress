@@ -41,6 +41,25 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get('/:slug', (req, res) => {
+    const slug = req.params.slug;
+    Article.findOne({
+        where: {
+            slug: slug
+        }
+    }).then(article => {
+        if(article != undifined){
+            res.render("article", {
+                article: article
+            });
+        }else{
+            res.redirect("/");
+        }
+    }).catch(err => {
+        res.redirect("/")
+    })
+});
+
 app.listen(8080, () => {
     console.log("Server is running!");
 });
