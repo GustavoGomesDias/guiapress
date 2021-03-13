@@ -29,7 +29,15 @@
                 <td><%= article.title %></td>
                 <td><%= article.slug %></td>
                 <td><%= article.category.title %></td>
-                <td>Açoes</td>
+                <td>
+
+                    <form  method="POST" action="/articles/delete" style="display: inline;"
+                        onsubmit="confirmDelete(event, this)">
+                            <!-- Ao clicar em deletar, enviamos o id pelo input -->
+                            <input type="hidden" name="id" value="<%= article.id %>">
+                            
+                            <button class="btn btn-danger">Deletar</button>
+                </td>
             <% }); %>
         </tbody>
     </table>
@@ -40,7 +48,7 @@
     function confirmDelete(event, form){
 
         event.preventDefault();
-        let decision = confirm("Deletar categoria?");
+        let decision = confirm("Deletar este artigo?");
         if(decision){
             form.submit();
         }else{
