@@ -34,7 +34,11 @@ app.use('/', categoriesController);
 app.use('/', articlesController);
 
 app.get("/", (req, res) => {
-    Article.findAll().then(articles => {
+    Article.findAll({
+        order: [
+            ['id', 'DESC']
+        ]
+    }).then(articles => {
         res.render("index", {
             articles: articles
         });
@@ -48,7 +52,7 @@ app.get('/:slug', (req, res) => {
             slug: slug
         }
     }).then(article => {
-        if(article != undifined){
+        if(article != undefined){
             res.render("article", {
                 article: article
             });
@@ -56,6 +60,7 @@ app.get('/:slug', (req, res) => {
             res.redirect("/");
         }
     }).catch(err => {
+        console.log(err);
         res.redirect("/")
     })
 });
