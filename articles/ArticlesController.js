@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Category = require("../categories/Category");
 const Article = require("./Article");
-const slugify = require('slugify');
+const slugiFy = require('slugify');
 
 router.get('/admin/articles', (req, res) => {
     Article.findAll({
@@ -41,7 +41,7 @@ router.post("/articles/save", (req, res) => {
 
 })
 
-router.post("/articles/delete", (req, res)=> {
+router.post("/admin/articles/delete", (req, res)=> {
     const id = req.body.id;
     if(id != undefined){
         if(!isNaN(id)){
@@ -58,6 +58,52 @@ router.post("/articles/delete", (req, res)=> {
     }else{
         res.redirect("/admin/articles");
     }
+});
+
+router.get("/admin/articles/edit/:id", (req, res) => {
+    const id = req.params.id;
+
+    if(isNaN(id)){
+        res.redirect("/admin/articles");
+    }
+
+    /* Pesquisar por id */
+    Article.findByPk(id).then(article => {
+        if(article != undefined){
+
+            Category.findAll().then(categories => {
+                res.render("admin/articles/edit", {
+                    article: article,
+                    categories: categories
+                });
+            });
+
+        }else{
+            res.redirect("/admin/articles");
+        }
+    }).catch(err => {
+        console.log(err);
+        res.redirect("/admin/articles");
+    });
+});
+
+router.post("/admin/articles/update", (req, res) => {
+    const id = req.body.id;
+    const title = req.body.title;
+    const body = req.body.body;
+    const category = req.body.category;
+
+    Article.update({title: title, body: body, categoryId: category, slug: slugiFy(title)}, {
+        where: {
+            id: id
+        }
+    }).then(() => {
+        res.redirect("/admin/articles");
+    }).catch(err => {
+        console.log(err);
+        res.redirect("/admin/articles");
+    });
+
 });
 
 
