@@ -106,5 +106,43 @@ router.post("/admin/articles/update", (req, res) => {
 
 });
 
+router.get("/articles/page/:num", (req, res) => {
+    const page = req.params.num;
+    var offset = 0;
+
+    if(isNaN(page) || page == 1){
+        offset = 0;
+    }else{
+        offset = parseInt(page) * 4;
+    }
+
+    Article.findAndCountAll({
+        // Limita a qtd. de elementos retornados
+        limit: 4,
+        // Retorna um artigo após x artigo (x = num)
+        offset: offset
+    }).then(articles => {
+        
+        // Verifica se tem uma próx. pág
+        var next;
+        // articles.count => count vem de findAndCountAll
+        if(offset + 4 >= articles.count){
+            next = false;
+        }else{
+            next = true;
+        }
+
+        const result = {
+            next: next,
+            articles: articles
+        }
+
+        res.json(result);
+    });
+
+});
+
 
 module.exports = router;
+
+// findAndCountAll => Pesquisa e retorna todos os elementos e q qtd. de elementos que tem nos artigos
