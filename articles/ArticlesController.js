@@ -113,14 +113,17 @@ router.get("/articles/page/:num", (req, res) => {
     if(isNaN(page) || page == 1){
         offset = 0;
     }else{
-        offset = parseInt(page) * 4;
+        offset = (parseInt(page) - 1) * 4;
     }
 
     Article.findAndCountAll({
         // Limita a qtd. de elementos retornados
         limit: 4,
         // Retorna um artigo após x artigo (x = num)
-        offset: offset
+        offset: offset,
+        order: [
+            ['id', 'DESC']
+        ],
     }).then(articles => {
         
         // Verifica se tem uma próx. pág
@@ -133,6 +136,7 @@ router.get("/articles/page/:num", (req, res) => {
         }
 
         const result = {
+            page: parseInt(page),
             next: next,
             articles: articles
         }
