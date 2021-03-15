@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const session = require('express-session');
 const connection = require('./database/database');
 
 // Controllers
@@ -14,6 +15,17 @@ const User = require('./users/User');
 
 // View engine
 app.set('view engine', 'ejs');
+
+// Sessions
+app.use(session({
+    // Como se fosse a senha da sessão (como se fosse o salt)
+    secret: "kjdbnjkfhnnbfsdf",
+
+    // Forma em que o cookie é guardado no navegador
+    // Cookie de identificação para a sessão do user
+    // maxAge -> Tempo em que expira o cookie (medido em ms)
+    cookie: {maxAge: 30000}
+}))
 
 // Arq. estáticos
 app.use(express.static('public'));
