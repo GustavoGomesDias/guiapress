@@ -15,18 +15,28 @@ router.post("/users/create", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
-    // slat = a letras e números aleatórios que são adionados a hash para que ela fique mais complexa
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(password, salt);
+    User.findOne({
+        where: {
+            email: email
+        }
+    }).then(user => {
+        if(user == undefined){
+            // slat = a letras e números aleatórios que são adionados a hash para que ela fique mais complexa
+            const salt = bcrypt.genSaltSync(10);
+            const hash = bcrypt.hashSync(password, salt);
 
-    User.create({
-        email: email,
-        password: hash
-    }).then(() => {
-        res.redirect("/");
-    }).catch((err) => {
-        res.redirect("/");
-    });
+            User.create({
+                email: email,
+                password: hash
+            }).then(() => {
+                res.redirect("/");
+            }).catch((err) => {
+                res.redirect("/");
+            });
+        }else{
+            res.redirect("/admin/users/create");
+        }
+    })
 
 });
 
