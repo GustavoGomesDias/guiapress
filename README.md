@@ -5,8 +5,8 @@ Blog simples para postar artigos 😎
 ## 📕 Sumário
 1. [O que eu aprendi de novo nesse projeto](https://github.com/GustavoGomesDias/guiapress#1--o-que-eu-aprendi-de-novo-nesse-projeto)
 2. [Tecnologias usadas](https://github.com/GustavoGomesDias/guiapress#2--tecnologias-usadas)
-3. [Para rodar](https://github.com/GustavoGomesDias/guiapress#4--para-rodar-o-projeto)
-4. [Importante](https://github.com/GustavoGomesDias/guiapress#5--importante)
+3. [Para rodar](https://github.com/GustavoGomesDias/guiapress#3--para-rodar-o-projeto)
+4. [Importante](https://github.com/GustavoGomesDias/guiapress#4--importante)
 
 ## 1. 🎓 O que eu aprendi de novo nesse projeto
 * Mexer com middleware;
