@@ -24,7 +24,7 @@ app.use(session({
     // Forma em que o cookie é guardado no navegador
     // Cookie de identificação para a sessão do user
     // maxAge -> Tempo em que expira o cookie (medido em ms)
-    cookie: {maxAge: 30000}
+    cookie: {maxAge: 30000000}
 }))
 
 // Arq. estáticos
