@@ -2,9 +2,13 @@
 
 Blog simples para postar artigos 😎
 
-## 1. 📕 Sumário
+## 📕 Sumário
+1. [O que eu aprendi de novo nesse projeto](https://github.com/GustavoGomesDias/guiapress#1--o-que-eu-aprendi-de-novo-nesse-projeto)
+2. [Tecnologias usadas](https://github.com/GustavoGomesDias/guiapress#2--tecnologias-usadas)
+3. [Para rodar](https://github.com/GustavoGomesDias/guiapress#4--para-rodar-o-projeto)
+4. [Importante](https://github.com/GustavoGomesDias/guiapress#5--importante)
 
-## 2. 🎓 O que eu aprendi de novo nesse projeto
+## 1. 🎓 O que eu aprendi de novo nesse projeto
 * Mexer com middleware;
 * Autenticação;
 * Login;
@@ -15,7 +19,7 @@ Blog simples para postar artigos 😎
 * Trabalhar com listagem usando relação 1-P-N;
 * Timezone com sequelize
 
-## 3. 💻 Tecnologias usadas
+## 2. 💻 Tecnologias usadas
 * Node;
 * MySQL;
 * Express;
@@ -26,7 +30,7 @@ Blog simples para postar artigos 😎
 * EJS;
 * TinyMCE.
 
-## 4. 🎉 Para iniciar o projeto
+## 3. 🎉 Para rodar o projeto
 1. Instale todas es tec's usadas junto do Node JS:
 
     ```
@@ -39,7 +43,7 @@ Blog simples para postar artigos 😎
     ```
 3. Entre em https://localhost:8080 e teste o aplicativo
 
-## 5. 👀 Observações
+## 4. 👀 Importante
 Nos [Commits](https://github.com/GustavoGomesDias/guiapress/commits?author=GustavoGomesDias) tem comentários das mudanças para estudos e referências futuras, se você está de passagem e estudando sobre nodejs, fique avontade para estudar comigo por lá. 😉
 
 
